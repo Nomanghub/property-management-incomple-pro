@@ -13,7 +13,7 @@ class Projects_model extends App_Model
     public function __construct()
     {
         parent::__construct();
-
+        
         $project_settings = [
             'available_features',
             'view_tasks',
@@ -106,7 +106,7 @@ class Projects_model extends App_Model
 				}
 				</style>
 			<div class="pt-main">
-				<div class="pt-logo"><img src="'.base_url().'uploads/company/349b48618e5a14ffff907abb6d9fedab.png" alt="" /></div>
+				<div class="pt-logo"><img src="'.base_url().'uploads/company/logo.png" alt="" /></div>
 			
 				<div class="pt-table-content">'.$row->message.'</div>
 			</div>			
@@ -122,6 +122,17 @@ class Projects_model extends App_Model
 	{
 		$this->db->where('id', $property_id);
 		$data = $this->db->get('tblprojects');
+		$this->db->where('project_id', $property_id);
+		$datass = $this->db->get('tblproject_alloptions');
+		$this->db->where('project_id', $property_id);
+		$gallery = $this->db->get('tblproject_gallery');		
+		
+		foreach($datass->result() as $rows)
+		  $proimg=$rows->pro_image;
+		  $protype=$rows->pro_type;
+		{
+			
+		}
 		$output = '<body>';
 		foreach($data->result() as $row)
 		 $date=date('Y-m-d h:i:sa');
@@ -136,102 +147,86 @@ class Projects_model extends App_Model
 				  $dd='In Processing'; 
 			  }elseif($row->status==5){
 				  $dd='Lease'; 
-			  }
-			$output = '<title>'.$row->name.'</title>';		
+			  }		
 			$output .= '
-			<style>
-				#propertypdf {
-				  font-family: Arial, Helvetica, sans-serif;
-				  border-collapse: collapse;
-				  width: 100%;
-				}
 
-				#propertypdf td, #propertypdf th {
-				  border: 1px solid #ddd;
-				  padding: 8px;
-				}
+	               
+				<table style="border-collapse: collapse;" id="table">
+					<tr>
+						<th style="text-align:left; ">
+							<h1 style="text-transform:uppercase;font-family: Inter,sans-serif;">'.$row->name.'</h1>
+						</th>
+						<th style="text-align:right; "><img src="'.base_url().'uploads/company/logo.png" alt="" style="width: 130px;"></th>
+					</tr>
+					<tr>
+						<td style=" text-align: center; background-color: #3FADA4;width: 35%;">
+							<h1 style=" font-size: 70px; color: #fff; margin-bottom: 0;overflow-wrap: anywhere;line-height:60px;font-family: Inter,sans-serif; ">
+								<span style=" font-weight: 400; ">For</span><br> '.$protype.'
+							</h1>
+							<h4 style=" text-transform: uppercase; color: #fff; margin: 0;font-family: Inter,sans-serif; ">offtered At</h4>
+							<h5 style=" margin: 0; padding: 10px; font-size: 20px; font-weight: bold; color: #fff;font-family: Inter,sans-serif; ">$1000000</h5>
+						</td>
+						<td style="width:65%;"><img src="'.base_url().'uploads/property/'.$proimg.'" alt="" style=" width: 100%;"></td>
+					</tr>
 
-				#propertypdf tr:nth-child(even){background-color: #fff;}
 
-				#propertypdf tr:hover {background-color: #fff;}
 
-				#propertypdf th {
-				  padding-top: 12px;
-				  padding-bottom: 12px;
-				  text-align: left;
-				  background-color: #04AA6D;
-				  color: white;
-				}
+				</table>	
+	
+	
 
-				
-
-				.pt-name h2 {
-					margin-bottom: 0px;
-				}
-
-				.pt-logo,.pt-pt-img{
-					text-align: center;
-				}
-				
-				.pt-main{
-					position:relative;
-				}
-				
-				.pt-pt-img img{
-					position:absolute;
-	                right:1px;
-					top:125px;
-				}
-				
-				.pt-logo img{
-					width:240px;
-				}
-				</style>
-			<div class="pt-main">
-				<div class="pt-logo"><img src="'.base_url().'uploads/company/349b48618e5a14ffff907abb6d9fedab.png" alt="" /></div>
-			
-				<div class="pt-table-content">
-				  <div class="pt-name">
-				  <h2>#'.$row->name.'</h2>
-				  <p>Date: '.$date.'</p>
-				  </div>
-				  <div class="pt-pt-img"><img width="100px" src="'.base_url().'uploads/property/'.$row->pro_image.'" /></div>
-					<table id="propertypdf">
-					 
-					  <tr>
-						<td>Property ID</td>
-						<td>'.$row->id.'</td>
-					  </tr>
-					  <tr>
-						<td>Property Name</td>
-						<td>'.$row->name.'</td>
-					  </tr>
-					  <tr>
-						<td>Property Status</td>
-						<td>'.$dd.'</td>
-					  </tr>
-					  <tr>
-						<td>Total Price</td>
-						<td>£'.$row->project_cost.'</td>
-					  </tr>
-					  <tr>
-						<td>Start Date</td>
-						<td>'.$row->start_date.'</td>
-					  </tr>
-					  <tr>
-						<td>End Date</td>
-						<td>'.$row->deadline.'</td>
-					  </tr>
-					  				  
-					</table>		
-				</div>
-			</div>			
+	
+	
+	
+	
+	
+	
+	
 
 			';
 		}
 		
+		$output .='<table><tr>';
+		foreach($gallery->result() as $rowss)
+		  //$proimg=$rowss->pro_image;
+		{
+
+			$output .='
+					<td>
+						<img src="'.base_url().'uploads/property/'.$rowss->gallery_img.'" alt="" style=" width: 100%;">
+					</td>
+								
+				';
+		
+		}
+
+        $output .='</tr>	
+			</table>';	
+
+
+
+        $output .='
+		
+		    <table>
+			    <tr><td>
+				
+	             <div class="about" style="">
+                    <h2 style="text-transform:uppercase;font-family: Inter,sans-serif;">About The '.$row->name.'</h2>
+					'.$row->description.'
+                </div>			
+				
+				</td></tr>
+			
+			</table>
+		
+		
+		';			
+		
+		
 		$output .= '</body>';
 		return $output;
+		$html .= $this->projects_model->property_pdf_details($property_id);
+		$this->pdf->createPDF($html, 'Property-'.$property_id.'', false);
 	}	
 	
 	

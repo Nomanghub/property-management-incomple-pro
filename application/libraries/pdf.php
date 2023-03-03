@@ -5,7 +5,7 @@ require_once(dirname(__FILE__) . '/dompdf/autoload.inc.php');
 
 class Pdf
 {
-    function createPDF($html, $filename='', $download=false, $paper='A4', $orientation='portrait'){
+    function createPDF($html, $filename='', $download=true, $paper='A4', $orientation='portrait'){
         $dompdf = new Dompdf\DOMPDF();
 		$dompdf->set_option('isRemoteEnabled', true);
         $dompdf->load_html($html);

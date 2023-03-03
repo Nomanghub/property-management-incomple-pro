@@ -8,12 +8,6 @@ $custom_fields = get_custom_fields('projects');
 // Like heading project name
 //$html = '<h1>' . _l('project_name') . ': ' . $project->name . '</h1>';
 $html = '<table width="100%" cellspacing="5" cellpadding="5">';
-$html .= '<tr>
-				<td width="75%"><h1>Property  Name: '. $project->name .' </h1></td>
-				<td width="25%">
-					<img width="200px" src="'.base_url().'uploads/property/'.$project->pro_image.'" />
-				</td>
-			</tr>';
 $html .= '</table>';			
 // project overview heading
 $html .= '<h3>' . ucwords(_l('project_overview')) . '</h3>';

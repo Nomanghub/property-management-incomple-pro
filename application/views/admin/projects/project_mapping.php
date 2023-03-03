@@ -50,11 +50,11 @@ button.btn.btn-primary.gal {
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                
-                <h3 style=" margin: 0; margin-bottom: 12px; ">#<?php echo $project->name ?>-Map</h3>	
+
+                <h3 style=" margin: 0; margin-bottom: 12px; ">#<?php echo $project->name ?>-Map</h3>
 				<div class="panel_s">
 					<div class="panel-body panel-table-full">
-					   
+
 						<div class="project_mapping">
 						   <div class="row">
 						   <?php foreach ($all_mapping as $mapping_lists) {
@@ -62,27 +62,27 @@ button.btn.btn-primary.gal {
 							 $lat=$mapping_lists->lat;
 							 $lng=$mapping_lists->lng;
 						   ?>
-						   <?php }?> 
-						   
+						   <?php }?>
+
 						   <?php if($lat!=null){ ?>
 								<div class="col-md-12">
-								   <div style="width:100%;height:350px" id="map"></div>					   
-								</div>							   
+								   <div style="width:100%;height:350px" id="map"></div>
+								</div>
 						   <?php } ?>
-							 
-										 
+
+
 						   </div>
-						</div>						
+						</div>
 					</div>
 				</div>
-               
+
 
             </div>
         </div>
     </div>
 
-						  
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACtELi1l0M60sMU0SnR7kWeCKiKnSk6SM&callback=initMap&libraries=&v=weekly" async></script>
+
+
 <script>
 	function initMap() {
 	  const uluru = { lat: <?php echo $lat; ?>, lng: <?php echo $lng; ?> };
@@ -121,4 +121,3 @@ button.btn.btn-primary.gal {
 
 	window.initMap = initMap;
 </script>
-

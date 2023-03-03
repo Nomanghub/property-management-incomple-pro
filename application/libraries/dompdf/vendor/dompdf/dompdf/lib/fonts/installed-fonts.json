@@ -1,0 +1,10 @@
+{
+    "open sans": {
+        "300_italic": "D:\\xampp\\htdocs\\duke\\application\\libraries\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/open_sans_300_italic_b4a7d925e086ad148b06e87bfa6cda0e",
+        "300": "D:\\xampp\\htdocs\\duke\\application\\libraries\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/open_sans_300_8eafd575bbaef3821514b2ae187a32c3",
+        "normal": "D:\\xampp\\htdocs\\duke\\application\\libraries\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/open_sans_normal_0de70c49c12ad3d5b30897be0764f760",
+        "500": "D:\\xampp\\htdocs\\duke\\application\\libraries\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/open_sans_500_e5c00ff5fbdabfd1178bcb6213f08eaa",
+        "600": "D:\\xampp\\htdocs\\duke\\application\\libraries\\dompdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/open_sans_600_80b344cbabc13253146884f38d4f451d",
+        "bold": "open_sans_bold_307c8b05e5c1ebed4511274cd14c5aa1"
+    }
+}
